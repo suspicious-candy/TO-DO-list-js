@@ -1,0 +1,40 @@
+<html>
+    <head>
+       <title>loops</title> 
+       <link rel="stylesheet" type="text/css" href="todo.css">
+    </head>
+    <body>
+        <p>Todo List </p>
+        <input placeholder="Todo name" class="inputter input">
+        <input placeholder="yyyy-mm-dd" type ="date" class="js-date input">
+        <button class ="add-todo-button" onclick="addition(document.querySelector('.inputter').value,document.querySelector('.js-date').value)">Add</button>
+        <div class = 'list todo-grid'></div>
+        <script>
+            arr=[];
+            function addition(input,date){
+                toadd={
+                    chore:input,
+                    dates:date
+                }
+                arr.push(toadd);
+                print();
+            }
+            function deletion(input){
+             arr.splice(input,1);
+             print();
+            }
+            function print(){
+                let todohtml='';
+                let i =0 ;
+                while(i<arr.length){
+                    const todo = arr[i];
+                    const html ='<div>'+todo['chore']+'</div>'+'<div>'+todo['dates']+'</div>'+'<div><button class ="delete-todo-button" onclick ="deletion(\''+i+'\')">Delete</button></div>'
+                   todohtml += html;
+                   i++;
+                }
+                document.querySelector('.list').innerHTML = todohtml;
+            }
+            
+        </script>
+    </body>
+</html>
